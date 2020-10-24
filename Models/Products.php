@@ -41,12 +41,10 @@
     class Product {
         public $name;
         public $priceUsd;
-        public $count;
 
         function __construct($name, $priceUsd) {
             $this->name = $name;
             $this->priceUsd = $priceUsd;
-            $this->count = 0;
         }
         function get_name() {
             return $this->name;
