@@ -3,23 +3,6 @@
 
     class Products extends Connector {
 
-        protected function getAllProducts() {
-            $conn = $this->connect();
-            $sql = "select product_name, price_usd from product order by product_id";
-
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
-
-            $stmt->bind_result($product_id, $product_name);
-
-            while($stmt->fetch()) {
-                echo $product_id . ' --- ' . $product_name . "\n";
-            }
-
-            $stmt->close();
-            $conn->close();
-        }
-
         protected function getProducts($productsArray) {
             $conn = $this->connect();
 
@@ -35,7 +18,6 @@
             $currentProduct = null;
 
             while($stmt->fetch()) {
-                // echo $product_id . ' --- ' . $product_name . "\n";
                 $currentProduct = new Product($product_name, $price_usd);
                 array_push($productsResult, $currentProduct);
             }
