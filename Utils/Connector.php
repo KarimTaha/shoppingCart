@@ -1,0 +1,28 @@
+<?php
+
+    class Connector {
+
+        private $host = "localhost";
+        private $user = "root";
+        private $password = "";
+        private $dbName = "shopping_cart";
+
+        protected function connect(){
+            
+            $link =  mysqli_connect($this->host, $this->user, $this->password, $this->dbName);
+
+            if (!$link) {
+                print_r("Error: Unable to connect to MySQL." . PHP_EOL);
+                print_r("Debugging errno: " . mysqli_connect_errno() . PHP_EOL);
+                print_r("Debugging error: " . mysqli_connect_error() . PHP_EOL);
+                exit;
+            }
+            
+            print_r("Success: A proper connection to MySQL was made! The my_db database is great." . PHP_EOL);
+            print_r("Host information: " . mysqli_get_host_info($link) . PHP_EOL);
+
+            return $link;
+        }
+    }
+    
+?>
