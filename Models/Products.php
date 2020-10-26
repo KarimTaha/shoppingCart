@@ -6,8 +6,10 @@
      * The products are saved in an array of Product objects and returned
      */
     function getProducts($conn, $productsArray) {
+        // Create an array with the unique values of the products array
+        $productsUniqueArray = array_unique($productsArray);
         // Get a comma separated string with all names in the array
-        $productsString = arrayToCommaSeparated($productsArray);
+        $productsString = arrayToCommaSeparated($productsUniqueArray);
         // SQL statement to fetch required products
         $sql = "select product_name, price_usd from product where FIND_IN_SET(product_name, \"$productsString\")  order by product_id";
         // Execute SQL statement
@@ -29,6 +31,10 @@
             $currentProduct = new Product($product_name, $price_usd);
             // Push the Product into the products array
             array_push($productsResult, $currentProduct);
+        }
+        // Check if the result has less rows that the input unique objects
+        if (count($productsUniqueArray) > count($productsResult)) {
+            print_r("Warning: you entered one or more products that do not exist. The invoice will be calculated for the other items.\n");
         }
         // Close the SQL statement
         $stmt->close();

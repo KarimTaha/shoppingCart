@@ -75,7 +75,7 @@
             // Initialize total discount for this offer to be 0
             $totalDiscount = 0.0;
             // Shoes offer
-            if ($this->code == "Shoes") {
+            if ($this->code == "Shoes" && isset($counts["Shoes"])) {
                 // Variable to hold the price of a pair of shoes before discount
                 $shoesPrice = 0.0;
                 // Variable to hold the count of shoes in the invoice
@@ -95,7 +95,7 @@
                 $this->count = $shoesCount;
             }
             // Jacket offer
-            elseif ($this->code == "Jacket50") {
+            elseif ($this->code == "Jacket50" && isset($counts["T-shirt"])  && isset($counts["Jacket"])) {
                 // Variable to hold the number of tshirts in the invoice
                 $tshirtCount = 0;
                 // Variable to hold the number of jackets in the invoice

@@ -28,6 +28,11 @@
         $inputCurrency = strtoupper($argv[1]);
         // Fetch the array of products that the user input
         $items = array_slice($argv,2);
+        // Handle if the user didn't enter any items in the command
+        if (count($items) < 1) {
+            print_r("You did not enter any items, or the command is not in the correct format.");
+            return;
+        }
         // Create an invoice object that we will use to prepare the invoice and print it
         $invoice = new Invoice();
         $invoice->printInvoice($items, $inputCurrency);
