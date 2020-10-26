@@ -35,15 +35,18 @@
         return $result;
     }
     
-
+    // Class product that represents a product (item) that a user can buy
     class Product {
+        // Class attributes
         private $name;
         private $priceUsd;
 
+        // Constructor setting name and price
         function __construct($name, $priceUsd) {
             $this->name = $name;
             $this->priceUsd = $priceUsd;
         }
+        // Getter functions
         function get_name() {
             return $this->name;
         }
