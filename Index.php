@@ -7,7 +7,7 @@
      * The Invoice view is used to create and print the invoice to the user based on the input
      */
 
-    include 'Views/Invoice.php';
+    include 'Views/InvoiceView.php';
 
     // Call the initInvoice function to fetch the user input and pass it to the Invoice view
     initInvoice();
@@ -25,11 +25,11 @@
         // Declare global variable that holds the user input from CMD
         global $argv;
         // Fetch the currency that the user input
-        $currency = strtoupper($argv[1]);
+        $inputCurrency = strtoupper($argv[1]);
         // Fetch the array of products that the user input
         $items = array_slice($argv,2);
         // Create an invoice object that we will use to prepare the invoice and print it
         $invoice = new Invoice();
-        $invoice->printInvoice($items);
+        $invoice->printInvoice($items, $inputCurrency);
     }
 ?>

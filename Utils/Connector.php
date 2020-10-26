@@ -1,6 +1,10 @@
 <?php
 
-    class Connector {
+    interface DBConnectionInterface {
+        public function connect();
+    }
+
+    class MySQLConnection implements DBConnectionInterface {
 
         private $host = "localhost";
         private $user = "root";
@@ -9,7 +13,7 @@
 
         private $debug_mode = false;
 
-        protected function connect(){
+        function connect(){
             
             $link =  mysqli_connect($this->host, $this->user, $this->password, $this->dbName);
 
