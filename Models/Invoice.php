@@ -21,6 +21,7 @@
             // Call getCurrencyRate to get the currencyRate object to convert to
             $invoiceCurrency = getCurrencyRate($conn, $inputCurrency);
             $conversionRate = $invoiceCurrency->get_rate();
+            $invoiceCurrencyCode = $invoiceCurrency->get_code();
 
             // TODO Get available offers
 
@@ -47,11 +48,11 @@
             $total = $subtotal + $taxes;
 
             // Print the invoice subtotal
-            print_r("Subtotal: " . $subtotal . " " . $inputCurrency . "\n");
+            print_r("Subtotal: " . $subtotal . " " . $invoiceCurrencyCode . "\n");
             // Print the taxes
-            print_r("Taxes: " . $taxes . " " . $inputCurrency . "\n");
+            print_r("Taxes: " . $taxes . " " . $invoiceCurrencyCode . "\n");
             // Print the invoice total
-            print_r("Total: " . $total . " " . $inputCurrency . "\n");
+            print_r("Total: " . $total . " " . $invoiceCurrencyCode . "\n");
         }
     }
 
