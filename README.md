@@ -71,3 +71,48 @@ Since the data is stored in a database, Model classes are needed to be the layer
     4. Offer Count (after calculation)
 
     The Offer class contains the function calculate discount, which uses a list of Products available in the invoice and their counts, and calculates the eligible discount of this offer when applied to these products.
+
+## Database Design
+
+The data required for this application is stored in a MySQL database that is accessed by the application Models. The database contains the following tables:
+
+1. Product
+
+| Column           | Type      | Length | Comments                                                              |
+|------------------|-----------|--------|-----------------------------------------------------------------------|
+| product_id       | int       |        | Auto-generated ID                                                     |
+| product_name     | varchar   | 100    |                                                                       |
+| price_usd        | double    |        |                                                                       |
+| description      | text      |        |                                                                       |
+| created_by       | varchar   | 50     |                                                                       |
+| creation_date    | timestamp |        | Defaults to current timestamp                                         |
+| updated_by       | varchar   | 50     |                                                                       |
+| last_update_date | timestamp |        | Defaults to current timestamp Update with current timestamp on update |
+
+2. Currency
+
+| Column           | Type      | Length | Comments                                                              |
+|------------------|-----------|--------|-----------------------------------------------------------------------|
+| currency_id      | int       |        | Auto-generated ID                                                     |
+| code             | varchar   | 5      |                                                                       |
+| name             | varchar   | 20     |                                                                       |
+| rate             | double    |        |                                                                       |
+| symbol           | char      | 2      |                                                                       |
+| created_by       | varchar   | 50     |                                                                       |
+| creation_date    | timestamp |        | Defaults to current timestamp                                         |
+| updated_by       | varchar   | 50     |                                                                       |
+| last_update_date | timestamp |        | Defaults to current timestamp Update with current timestamp on update |
+
+3. Offer
+
+| Column           | Type      | Length | Comments                                                              |
+|------------------|-----------|--------|-----------------------------------------------------------------------|
+| offer_id         | int       |        | Auto-generated ID                                                     |
+| code             | varchar   | 50     |                                                                       |
+| description      | text      |        |                                                                       |
+| start_date       | date      |        |                                                                       |
+| end_date         | date      |        |                                                                       |
+| created_by       | varchar   | 50     |                                                                       |
+| creation_date    | timestamp |        | Defaults to current timestamp                                         |
+| updated_by       | varchar   | 50     |                                                                       |
+| last_update_date | timestamp |        | Defaults to current timestamp Update with current timestamp on update |
