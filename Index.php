@@ -33,8 +33,8 @@
             print_r("You did not enter any items, or the command is not in the correct format.");
             return;
         }
-        // Create an invoice object that we will use to prepare the invoice and print it
-        $invoice = new Invoice();
-        $invoice->printInvoice($items, $inputCurrency);
+        // Create an invoiceView object that we will use to prepare the invoice and print it
+        $invoiceView = new InvoiceView();
+        $invoiceView->prepareInvoice($items, $inputCurrency);
     }
 ?>
