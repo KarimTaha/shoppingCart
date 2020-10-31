@@ -17,6 +17,9 @@
             return $this->conn;
         }
 
+        /**
+         * Function to test getting available offers in the database
+         */
         public function testGetOffers() {
             require './Models/Offers.php';
 

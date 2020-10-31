@@ -17,6 +17,9 @@
             return $this->conn;
         }
 
+        /**
+         * Test fetching a valid currency from DB (Euro)
+         */
         public function testGetValidCurrency() {
             require './Models/Currency.php';
 
@@ -31,6 +34,9 @@
             $conn->close();
         }
 
+        /**
+         * Test fetching a currency not available in DB (Pound), USD should be used instead
+         */
         public function testGetInvalidCurrency() {
             $conn = $this->getDBConn();
             $resultCurrency = getCurrencyRate($conn, "GBP");

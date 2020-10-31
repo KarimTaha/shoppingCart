@@ -17,12 +17,18 @@
             return $this->conn;
         }
         
+        /**
+         * Test function that takes as input an array of strings, and returns the strings comma separated
+         */
         public function testArrayToCommaSeparated() {
             require './Models/Products.php';
             $resultString = arrayToCommaSeparated(Array("A", "B", "C"));
             $this->assertEquals("A,B,C", $resultString);
         }
 
+        /**
+         * Test fetching products from DB, use a single products as input
+         */
         public function testGetSingleProduct() {
             $conn = $this->getDBConn();
             $products = getProducts($conn, array("Shoes"));
@@ -35,6 +41,9 @@
             $conn->close();
         }
 
+        /**
+         * Test fetching products from DB, use a duplicate product as input
+         */
         public function testGetDuplicateProduct() {
             $conn = $this->getDBConn();
 
@@ -47,6 +56,9 @@
             $conn->close();
         }
 
+        /**
+         * Test fetching products from DB, use four different products
+         */
         public function testGetMultipleProducts() {
             $conn = $this->getDBConn();
 
