@@ -116,3 +116,46 @@ The data required for this application is stored in a MySQL database that is acc
 | creation_date    | timestamp |        | Defaults to current timestamp                                         |
 | updated_by       | varchar   | 50     |                                                                       |
 | last_update_date | timestamp |        | Defaults to current timestamp Update with current timestamp on update |
+
+## Running the Application
+
+To run the application, navigate to the project root directory /shoppingCart/ and use the following command
+`php Index.php {currency} [products]`
+
+Example:
+`php Index.php USD Pants Pants Shoes Jacket T-shirt`
+
+The application will output the invoice in the same CMD window in the following format
+> Subtotal
+> Taxes
+> Discount (if any)
+> Total
+
+Example:
+> Subtotal: 66.96 USD
+> Taxes: 9.3744 USD
+> Discount: 10% off shoes: -2.499 USD
+> Total: 73.8404 USD
+
+## Testing
+
+The application contains unit tests to test the functionality of all invoice generation functions. Phpunit was used to create the test files under Tests/ as follows:
+
+1. InvoiceTest
+    Used to test the Invoice Model, by providing several possible inputs to the printInvoice function
+2. ProductsTest
+    Used to test the Products Model, by providing different lists of products to the getProducts function
+3. CurrencyTest
+    Used to test the Currency Model, by providing a valid and invalid currency to the getCurrencyRate function
+4. OffersTest
+    Used to test the Offers Model, by fetching the available offers in the database and validating them
+
+## Future Enhancements
+
+The following changes can be added later to the application to improve its functionality:
+
+1. Identify the Products entered by user that are invalid or not available
+2. Prompt user for input to provide a more interactive experience
+3. Generate a detailed list of discounts applicable, not just the total discount
+4. Use the currency conversion logic in the SQL queries instead of having logic for it in application
+5. Modularize the Invoice Model logic to avoid complexity
