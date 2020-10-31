@@ -123,18 +123,25 @@ To run the application, navigate to the project root directory /shoppingCart/ an
 `php Index.php {currency} [products]`
 
 Example:
+
 `php Index.php USD Pants Pants Shoes Jacket T-shirt`
 
 The application will output the invoice in the same CMD window in the following format
 > Subtotal
+> 
 > Taxes
+> 
 > Discount (if any)
+> 
 > Total
 
 Example:
 > Subtotal: 66.96 USD
+> 
 > Taxes: 9.3744 USD
+> 
 > Discount: 10% off shoes: -2.499 USD
+> 
 > Total: 73.8404 USD
 
 ## Testing
